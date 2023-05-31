@@ -1,0 +1,29 @@
+.repair-form {
+    display: flex;
+    flex-direction: column;
+}
+app-loader {
+    position: absolute;
+    /* width: 100%; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+  }
+.form-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10vh;
+    width: 30rem;
+}
+
+.form-title {
+    text-align: center;
+    color: orange;
+}
+
+@media only screen and (max-width: 600px) {
+    .form-wrapper { 
+        width: 100%;
+    }
+  }
