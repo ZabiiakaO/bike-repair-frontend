@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClient, HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoaderComponent } from './components/loader/loader.component';
@@ -15,11 +15,20 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { ToastrModule, provideToastr } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CyclixLogoComponent } from './components/cyclix-logo/cyclix-logo.component'; 
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
 @NgModule({
   declarations: [
     AppComponent,
     LoaderComponent,
-    BikeRepairFormComponent
+    BikeRepairFormComponent,
+    CyclixLogoComponent, 
   ],
   imports: [
     BrowserModule,
@@ -37,7 +46,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       timeOut: 15000,  
       progressBar: true, 
     }),
-    BrowserAnimationsModule
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+    BrowserAnimationsModule, 
   ],
   providers: [provideAnimations(), provideToastr()],
   bootstrap: [AppComponent]

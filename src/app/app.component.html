@@ -1,12 +1,27 @@
 <p>
-    <mat-toolbar color="primary">
-        <button mat-icon-button >
-            <mat-icon fontIcon="menu"> </mat-icon>
-        </button>
-        <span>Bike Repair Service</span>
+    <mat-toolbar class="toolbar">
+        <app-cyclix-logo></app-cyclix-logo>
+        <div class="btn-group"> 
+            <a class=" link-btn " (click)="useLanguage('de')">  DE  </a>
+            <a class="link-btn" (click)="useLanguage('en')"> EN </a>
+          </div>
     </mat-toolbar>
+ 
 </p>
 <app-bike-repair-form></app-bike-repair-form>
 
-
- 
+<footer>
+    <div class="footer-wrapper"> 
+        <app-cyclix-logo></app-cyclix-logo>
+        <div class="footer-links">
+            <span>{{'termsOfUse' | translate}}</span>
+            <span>{{'dataProtection' | translate}}</span>
+            <span>{{'imprint' | translate}}</span>
+        </div>
+        <div class="btn-group"> 
+            <a class=" link-btn " (click)="useLanguage('de')">  DE  </a>
+            <a class="link-btn" (click)="useLanguage('en')"> EN </a>
+          </div>
+        
+    </div> 
+</footer>

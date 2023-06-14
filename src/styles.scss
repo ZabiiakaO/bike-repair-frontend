@@ -1,7 +1,32 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
- /* based on angular-toastr css https://github.com/Foxandxss/angular-toastr/blob/cb508fe6801d6b288d3afc525bb40fee1b101650/dist/angular-toastr.css */
 
-/* position */
+
+@font-face {
+  font-family: 'CeraProBlackItalic';
+  src: url('./assets/CeraProBlackItalic.ttf');
+}
+@font-face {
+  font-family: 'CeraProBlack';
+  src: url('./assets/CeraProBlack.ttf');
+}
+@font-face {
+  font-family: 'CeraProBold';
+  src: url('./assets/CeraProBold.ttf');
+}
+@font-face {
+  font-family: 'CeraProLight';
+  src: url('./assets/CeraProLight.ttf');
+}
+@font-face {
+  font-family: 'CeraProMedium';
+  src: url('./assets/CeraProMedium.ttf');
+}
+@font-face {
+  font-family: 'CeraProRegularItalic';
+  src: url('./assets/CeraProRegularItalic.ttf');
+}
+
+ 
 .toast-center-center {
     top: 50%;
     left: 50%;
@@ -190,4 +215,13 @@
       padding: 15px 15px 15px 50px;
       width: 25em;
     }
+  }
+
+  mat-toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 6.5rem;
+    background-color: #0D0F1E;
+    color: white; 
   }

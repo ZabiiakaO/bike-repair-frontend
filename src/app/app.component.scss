@@ -6,3 +6,38 @@
     flex: 1 1 auto;
   }
  
+.toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 6.5rem;
+    background-color: #0D0F1E;
+    color: white;  
+    display: flex;
+    justify-content: space-between;
+  }
+  footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #0D0F1E;
+    min-height: 15.8rem;
+    color: white;
+    width: 100%;
+  }
+  
+ .footer-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 5rem;
+  position: absolute;
+  top: 6rem;
+  left: 7.5rem;
+  font-family: "CeraProLight";
+ }
+
+ .link-btn {
+  cursor: pointer;
+  font-family: "CeraProLight";
+ }

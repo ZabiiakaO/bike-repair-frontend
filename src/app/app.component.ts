@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LoaderService } from './services/loader.service';
 import { Subject } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,11 @@ import { Subject } from 'rxjs';
 export class AppComponent {
   title = 'bike-repair-form';
   isLoading: Subject<boolean> = this.loader.isLoading;
-  constructor(private loader: LoaderService) {}
+  constructor(private loader: LoaderService, private translate: TranslateService) {
+    translate.setDefaultLang('en');
+  }
+
+  useLanguage(language: string) {
+    this.translate.use(language);
+  }
 }
