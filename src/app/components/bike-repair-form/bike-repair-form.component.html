@@ -1,20 +1,27 @@
-<!--  
+ 
+<div class="main-wrapper">
+  <div>
+    <h2 class="form-title"> {{'TellUsSomethingAboutYourBike' | translate}} </h2>
+  </div>
 <div class="form-wrapper">
-    <h2 class="form-title">Bike Repair Form</h2>
-    <form class="repair-form" action="submit" [formGroup]="form">
-        <mat-form-field>
-            <mat-label>Name</mat-label>
-            <input id="name" [(ngModel)]="bikeRepairRequest.name" type="text" formControlName="name" matInput placeholder="John Doe" value="">
-          </mat-form-field> 
-          <mat-form-field>
-            <mat-label>Email</mat-label>
-            <input id="email" [(ngModel)]="bikeRepairRequest.email" type="text" formControlName="email" matInput placeholder="doe@mail.com" value="">
-          </mat-form-field> 
-          <mat-form-field>
-            <mat-label>Description</mat-label>
-            <textarea  id="description" [(ngModel)]="bikeRepairRequest.description"  formControlName="description" matInput placeholder="Describe Your Problem" value=""></textarea>
-          </mat-form-field> 
-        <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
-    </form>
+  <form class="repair-form" action="submit" [formGroup]="form">
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input id="name" [(ngModel)]="bikeRepairRequest.name" type="text" formControlName="name" matInput placeholder="John Doe" value="">
+      </mat-form-field> 
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input id="email" [(ngModel)]="bikeRepairRequest.email" type="text" formControlName="email" matInput placeholder="doe@mail.com" value="">
+      </mat-form-field> 
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea  id="description" [(ngModel)]="bikeRepairRequest.description"  formControlName="description" matInput placeholder="Describe Your Problem" value=""></textarea>
+      </mat-form-field> 
+    <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+</form> 
+
+</div> 
+    
+     
     <app-loader *ngIf="isLoading| async"></app-loader>
-</div> -->
+</div>

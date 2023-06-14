@@ -1,11 +1,13 @@
 import { Input } from '@angular/core';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { BikeRepairModel } from 'src/app/models/bike-repair.model';
 import { BikeRepairService } from 'src/app/services/bike-repair.service';
 import { LoaderService } from 'src/app/services/loader.service';
+
 @Component({
   selector: 'app-bike-repair-form',
   templateUrl: './bike-repair-form.component.html',
@@ -21,7 +23,11 @@ export class BikeRepairFormComponent {
   isLoading: Subject<boolean> = this.loader.isLoading;
   constructor(private repairFormBuilder: FormBuilder, private bikeRepairService: BikeRepairService, 
     private toastrService: ToastrService,
-    private loader: LoaderService) {
+    private loader: LoaderService,
+    private translate: TranslateService) {
+
+    translate.setDefaultLang('en');
+
     this.name = new FormControl('')
     this.email = new FormControl('')
     this.description = new FormControl('')
@@ -34,6 +40,7 @@ export class BikeRepairFormComponent {
   ngOnInit(): void {
     
   }
+ 
   onSubmit() { 
     if (this.form.valid)  {
       this.bikeRepairService.postBikeRepairRequest(this.bikeRepairRequest).subscribe((result: any) => {

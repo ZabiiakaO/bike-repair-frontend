@@ -18,7 +18,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CyclixLogoComponent } from './components/cyclix-logo/cyclix-logo.component'; 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome' 
+import { library as legacyLibrary } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -54,8 +58,13 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     BrowserAnimationsModule, 
+    FontAwesomeModule
   ],
   providers: [provideAnimations(), provideToastr()],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, far, fab);
+  }
+ }

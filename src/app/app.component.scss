@@ -21,7 +21,7 @@
     bottom: 0;
     left: 0;
     background-color: #0D0F1E;
-    min-height: 15.8rem;
+    min-height: 25rem;
     color: white;
     width: 100%;
   }
@@ -29,14 +29,35 @@
  .footer-links {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  min-height: 5rem;
-  position: absolute;
-  top: 6rem;
-  left: 7.5rem;
+  justify-content: space-around; 
+  position: absolute; 
   font-family: "CeraProLight";
  }
 
+ .footer-terms {
+  top: 6rem;
+  left: 7.5rem;
+  min-height: 5rem;
+ }
+
+ .footer-follow { 
+  min-height: 5rem; 
+  top: 13rem;
+  left: 7.5rem; 
+ }
+ 
+ .media-links {
+  position: absolute; 
+  display: flex; 
+  justify-content: space-around; 
+  min-height: 5rem; 
+  top: 19rem;
+  left: 7.5rem; 
+ }
+fa-icon {
+  margin-right: 1rem;
+  font-size: 2.3rem;
+}
  .link-btn {
   cursor: pointer;
   font-family: "CeraProLight";
