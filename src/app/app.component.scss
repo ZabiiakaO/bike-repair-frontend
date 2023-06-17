@@ -1,6 +1,5 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-@import 'ngx-toastr/toastr';
-
+ 
  
 .example-spacer {
     flex: 1 1 auto;
@@ -18,12 +17,12 @@
   }
   footer {
     position: absolute;
-    bottom: 0;
+    bottom: -435px;
     left: 0;
     background-color: #0D0F1E;
     min-height: 25rem;
     color: white;
-    width: 100%;
+    width: 100%; 
   }
   
  .footer-links {

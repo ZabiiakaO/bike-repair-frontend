@@ -1,0 +1,32 @@
+
+.step-bar-wrapper {
+    position: sticky; 
+    margin-top: 1rem;
+}
+.step-bar {
+    position: relative;
+}
+.step-bar-flex {
+    display: flex;
+    flex-direction: column;
+    height: 18rem;
+    justify-content: space-between;
+}
+.path {
+    height: 258px;
+    width: 3px;
+    background-color: #FF5E3A;
+    position: absolute;
+    left: 12px;
+}
+.step {
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    border: 2px solid #FF5E3A;
+    border-radius: 50%;
+    z-index: 1;
+}
+.step-active {
+    background-color: #FF5E3A;
+}

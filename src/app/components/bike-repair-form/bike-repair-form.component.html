@@ -1,27 +1,171 @@
- 
 <div class="main-wrapper">
   <div>
     <h2 class="form-title"> {{'TellUsSomethingAboutYourBike' | translate}} </h2>
   </div>
-<div class="form-wrapper">
-  <form class="repair-form" action="submit" [formGroup]="form">
-    <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input id="name" [(ngModel)]="bikeRepairRequest.name" type="text" formControlName="name" matInput placeholder="John Doe" value="">
-      </mat-form-field> 
-      <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input id="email" [(ngModel)]="bikeRepairRequest.email" type="text" formControlName="email" matInput placeholder="doe@mail.com" value="">
-      </mat-form-field> 
-      <mat-form-field>
-        <mat-label>Description</mat-label>
-        <textarea  id="description" [(ngModel)]="bikeRepairRequest.description"  formControlName="description" matInput placeholder="Describe Your Problem" value=""></textarea>
-      </mat-form-field> 
-    <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
-</form> 
 
-</div> 
-    
-     
-    <app-loader *ngIf="isLoading| async"></app-loader>
+  <div class="form-wrapper">
+    <app-step-bar currentStep={{currentStep}}></app-step-bar>
+    <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <span class="mandatory-fields-message">{{'Fields with a * are mandatory' | translate}}</span>
+          <div class="form-flex">
+            <div>
+              <p>
+                <span>{{"Do you know your bike type?" | translate}}</span>
+              </p>
+              <dx-select-box [dataSource]="types" valueExpr="name" formControlName="bikeType" displayExpr="name" valueExpr="name"
+                drop-down-button-template="imageIcon">
+                <div *dxTemplate="let data of 'dropDownButton'">
+                  <img src="../../../assets/custom-dropbutton-icon.svg" class="custom-icon">
+                </div>
+              </dx-select-box>
+            </div>
+            <div>
+              <p>
+                <span>{{"What brand is your bike?" | translate}}</span>
+              </p>
+              <dx-select-box [dataSource]="brands" valueExpr="name" formControlName="bikeBrand" displayExpr="name">
+                <div *dxTemplate="let data of 'dropDownButton'">
+                  <img src="../../../assets/custom-dropbutton-icon.svg" class="custom-icon">
+                </div>
+              </dx-select-box>
+            </div>
+          </div>
+        </form>
+
+        <div class="btn-wrapper">
+          <button matStepperNext>
+            <dx-button icon="arrowdown" text="Next step"></dx-button>
+          </button>
+        </div>
+      </mat-step> 
+
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <h2 class=""> {{'Would you like to book a standard service package?' | translate}} <i
+              class="dx-icon dx-icon-help"></i> </h2>
+          
+          <div class="radio-flex"> 
+            <dx-radio-group [items]="packages" formControlName="servicePackage"  layout="horizontal" itemTemplate="radio" displayExpr="fullinfo"  valueExpr="name">
+              <div class="radio" *dxTemplate="let data of 'radio'">
+                <div class="icon-illu">
+                  <span>Icon/ Illu</span>
+                </div>  
+                {{data.fullinfo}}
+            </div>  
+            </dx-radio-group>
+            
+
+          </div>
+          <div class="form-grid"> 
+            <dx-check-box 
+                  text="Do not book a service package"
+                  hint="Do not book a service package"
+                  iconSize="25"
+              >
+              </dx-check-box>
+              <dx-check-box
+              text="Does your bike have an electric motor?"
+              hint="Does your bike have an electric motor?"
+              iconSize="25"
+          >
+          </dx-check-box>
+          </div>
+        </form>
+        <div class="btn-wrapper">
+          <button matStepperNext>
+            <dx-button icon="arrowdown" text="Next step"></dx-button>
+          </button>
+        </div>
+      </mat-step>
+
+      <mat-step [stepControl]="thirdFormGroup">
+         
+        <form [formGroup]="thirdFormGroup">
+          <h2>{{"Would you like to book individual services only?" | translate}}</h2>
+        <p>
+          <span>{{"Multiple selections are possible" | translate}}</span>
+        </p>
+          <div class="form-grid">
+            <div *ngFor="let item of units ; let i = index"  >
+              <dx-check-box id="{{item.id}}"  [formControlName]="item.id"    
+                  text="{{item.name | translate}}"
+                  hint="{{item.name | translate}}"
+                  iconSize="25"
+              >
+              </dx-check-box>
+            </div>
+          </div> <h2>{{"E-Bike:" | translate}}</h2>
+          <div class="form-grid">
+            
+            <div *ngFor="let item of unitsElectro" > 
+                <dx-check-box   [formControlName]="item.id"    
+                text="{{item.name | translate}}"
+                hint="{{item.name | translate}}"
+                iconSize="25"
+            >
+            </dx-check-box> 
+            </div>
+          </div>
+        </form>
+
+        <div class="btn-wrapper">
+          <button matStepperNext>
+            <dx-button icon="arrowdown" text="Next step"></dx-button>
+          </button>
+        </div>
+      </mat-step>
+
+      <mat-step [stepControl]="fourthFormGroup">
+        <form [formGroup]="fourthFormGroup">
+          <h2>{{"Would you like to describe the problem with your bike in more detail?" | translate}}</h2>
+          <dx-text-area  placeholder="e.g. the chain broke, I have a figure eight in the front wheel." formControlName="description"></dx-text-area>
+          <div class="small-text-field-wrapper">
+            <dx-text-box class="small-text-field" formControlName="costCeiling"></dx-text-box> <h3>{{"Do you have a cost ceiling?" | translate}}</h3>
+          </div>
+           
+        </form>
+
+        <div class="btn-wrapper">
+          <button matStepperNext>
+            <dx-button icon="arrowdown" text="Next step"></dx-button>
+          </button>
+        </div>
+      </mat-step>
+
+      <mat-step [stepControl]="fifthFromGroup">
+        <form [formGroup]="fifthFromGroup">
+          <div class="form-grid">
+            <dx-text-box placeholder="Vorname" formControlName="firstName"></dx-text-box>
+            <dx-text-box placeholder="Nachname" formControlName="secondName"></dx-text-box>
+            <dx-text-box placeholder="Strasse" formControlName="street"></dx-text-box>
+            <dx-text-box placeholder="Nr" formControlName="no"></dx-text-box>
+            <dx-text-box placeholder="PLZ" formControlName="postcode"></dx-text-box>
+            <dx-text-box placeholder="Ort" formControlName="location"></dx-text-box>
+            <dx-text-box placeholder="E-mail " formControlName="email"></dx-text-box>
+            <dx-text-box placeholder="Telefon" formControlName="phone"></dx-text-box>
+          </div>
+        </form>
+
+        <div class="btn-wrapper">
+          <button matStepperNext>
+            <dx-button text="{{'Upload service data and receive offers' | translate}}" 
+            (onClick)="onSubmit(); 
+            firstFormGroup.reset();
+            secondFormGroup.reset();
+            thirdFormGroup.reset();
+            fourthFormGroup.reset();
+            fifthFromGroup.reset();
+             "></dx-button>
+          </button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+
+
+  </div>
+ 
+   
+  <app-loader *ngIf="isLoading| async"></app-loader>
 </div>

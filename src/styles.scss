@@ -1,5 +1,7 @@
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
-
+ 
+*{
+  font-family: "CeraProLight";
+}
 
 @font-face {
   font-family: 'CeraProBlackItalic';
@@ -26,7 +28,115 @@
   src: url('./assets/CeraProRegularItalic.ttf');
 }
 
+.dx-button {
+  // height: 3.625rem;
+  background-color: #FF5E3A;
+  border-radius: 50px;
+  color: white;
+  font-size: 1.5rem;
+}
+.dx-button-content {
+  display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+.dx-button .dx-icon {  
+  float: right;  
+  padding-left: 10px;  
+}  
+.dx-button-mode-contained .dx-icon {
+  color: white;
+  font-size: 2.3rem;
+  position: relative;
+  right: 24px;
+  top: 12px;
+}
+.dx-button-has-text .dx-button-content {
+  padding: 10px 26px;
+  margin: 1rem;
+  align-items: baseline;
+}
+.dx-button-mode-contained.dx-state-hover {
+  background-color: #ed2b00 ;
+  font-size: 1.5rem;
+}
+
+.dx-button-text {
+ margin: 0 3rem; 
+ white-space: wrap !important;
+ width: 17rem;
+}
+
+.dx-dropdowneditor.dx-dropdowneditor-field-clickable{
+  border: none;
+  height: 3.4rem;
+  width: 20rem;
+  border-radius: 15px;
+}
+
+.dx-texteditor-container { 
+  padding: 0 2rem; 
+} 
  
+.dx-dropdownlist-popup-wrapper .dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item-content {
+   color: #FF5E3A;
+   font-size: 20px;
+}
+
+.dx-selectbox .dx-texteditor-input:read-only {
+  color: #FF5E3A;
+  font-size: 20px;
+}
+
+.dx-radiobutton-icon-checked .dx-radiobutton-icon-dot { 
+  background: #FF5E3A; 
+}
+.dx-radiogroup-horizontal .dx-radiobutton { 
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  min-height: 12rem;
+  justify-content: left;
+}
+.dx-radiobutton { 
+  font-size: 25px;
+  color: #FF5E3A;
+}
+.dx-radio-value-container { 
+  margin: 2rem 0;
+}
+.dx-checkbox {
+  font-size: 25px; 
+  color: #FF5E3A;
+}
+.dx-checkbox-text {
+   padding-left: 36px;
+}
+.dx-checkbox-checked .dx-checkbox-icon { 
+  color: #FF5E3A; 
+}
+.dx-texteditor.dx-editor-outlined { 
+  border-radius: 5px;
+  border: 2px solid #FF5E3A;
+  font-size: 1.5rem;
+}
+.small-text-field-wrapper {
+  display: flex;
+}
+.small-text-field {
+  width: 9.1rem;
+  margin-right: 3rem;
+}
+
+ 
+.dx-checkbox-indeterminate .dx-checkbox-icon {
+  color: #FF5E3A; 
+}
+
+.dx-checkbox-indeterminate .dx-checkbox-icon::before { 
+  background-color: #FF5E3A; 
+}
+
 .toast-center-center {
     top: 50%;
     left: 50%;

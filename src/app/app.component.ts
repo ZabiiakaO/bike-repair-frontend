@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoaderService } from './services/loader.service';
+import { LoaderService } from './services/loader-service/loader.service';
 import { Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 
